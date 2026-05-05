@@ -1,0 +1,109 @@
+:root {
+    --color-light: #eeeed2;
+    --color-dark: #EBBAB9;
+    --size: 60px;
+    --coord-color: #333;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #C492B1;
+    font-family: sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* Wrapper per mettere numeri e scacchiera fianco a fianco */
+.main-wrapper {
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Coordinate Verticali (Numeri) */
+.coords-y {
+    display: flex;
+    flex-direction: column;
+    height: calc(var(--size) * 8);
+    justify-content: space-around;
+    margin-right: 10px;
+    color: var(--coord-color);
+    font-weight: bold;
+}
+
+.coords-y div {
+    height: var(--size);
+    display: flex;
+    align-items: center;
+}
+
+/* Coordinate Orizzontali (Lettere) */
+.coords-x {
+    display: flex;
+    width: calc(var(--size) * 8);
+    justify-content: space-around;
+    margin-top: 10px;
+    color: var(--coord-color);
+    font-weight: bold;
+}
+
+.coords-x div {
+    width: var(--size);
+    text-align: center;
+}
+
+.chessboard {
+    display: grid;
+    grid-template-columns: repeat(8, var(--size));
+    grid-template-rows: repeat(8, var(--size));
+    border: 7px solid #333;
+}
+
+.cell {
+    width: var(--size);
+    height: var(--size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+}
+
+/* Logica colori (Pattern scacchi) */
+.chessboard div:nth-child(16n-15), .chessboard div:nth-child(16n-13), 
+.chessboard div:nth-child(16n-11), .chessboard div:nth-child(16n-9),
+.chessboard div:nth-child(16n-6), .chessboard div:nth-child(16n-4), 
+.chessboard div:nth-child(16n-2), .chessboard div:nth-child(16n) {
+    background-color: var(--color-light);
+}
+
+.chessboard div:nth-child(16n-7), .chessboard div:nth-child(16n-5), 
+.chessboard div:nth-child(16n-3), .chessboard div:nth-child(16n-1),
+.chessboard div:nth-child(16n-14), .chessboard div:nth-child(16n-12), 
+.chessboard div:nth-child(16n-10), .chessboard div:nth-child(16n-8) {
+    background-color: var(--color-dark);
+}
+
+/* Colore Pezzi */
+.chessboard div:nth-child(-n+16) { color: #000; }
+.chessboard div:nth-child(n+49) { color: #fff; text-shadow: 0 0 2px black; }
+
+h1  {
+    font-family: Quicksand;
+    color: #000;
+}
+
+.cell {
+    font-size: 60px; /* Aumenta questo valore (es. da 40px a 60px) */
+}
